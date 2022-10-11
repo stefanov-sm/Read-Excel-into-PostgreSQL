@@ -1,8 +1,7 @@
 CREATE OR REPLACE FUNCTION spreadsheetml_dump(xl xml)
 RETURNS TABLE(row_number integer, cell_data text, cell_type text) LANGUAGE sql as
 $$
- select * 
- from xmltable
+ select * from xmltable
  (
   xmlnamespaces
   (
@@ -15,9 +14,9 @@ $$
   '/msoxl:Workbook/msoxl:Worksheet/msoxl:Table/msoxl:Row/msoxl:Cell' 
   passing by ref xl
   columns 
-  row_number for ordinality, 
-  cell_data text path 'msoxl:Data', 
-  cell_type text path 'msoxl:Data/@msoxl:Type'
+   row_number for ordinality, 
+   cell_data text path 'msoxl:Data', 
+   cell_type text path 'msoxl:Data/@msoxl:Type'
  );
 $$;
 
@@ -44,9 +43,9 @@ begin
   '/msoxl:Workbook/msoxl:Worksheet/msoxl:Table/msoxl:Row/msoxl:Cell' 
   passing by ref xlxml
   columns
-  row_number for ordinality, 
-  cell_data text path 'msoxl:Data', 
-  cell_type text path 'msoxl:Data/@msoxl:Type'
+   row_number for ordinality, 
+   cell_data text path 'msoxl:Data', 
+   cell_type text path 'msoxl:Data/@msoxl:Type'
  );
 end;
 $$;
