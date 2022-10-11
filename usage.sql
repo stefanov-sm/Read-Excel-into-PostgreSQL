@@ -6,6 +6,6 @@ select
   max(cell_data) filter (where row_number % 5 =  3) "C",
   max(cell_data) filter (where row_number % 5 =  4) "D",  
   max(cell_data) filter (where row_number % 5 =  0) "E"
-from spreadsheetml_fromfile('path-to/ecb.xml') 
+from spreadsheetml_fromfile('path-to/ecb.xml')
 group by ordinal
 order by ordinal;
