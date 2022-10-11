@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION spreadsheetml_dump(xl xml)
 RETURNS TABLE(row_number integer, cell_data text, cell_type text) LANGUAGE sql as
-$function$
+$$
  select * 
  from xmltable
  (
@@ -19,11 +19,11 @@ $function$
   cell_data text path 'msoxl:Data', 
   cell_type text path 'msoxl:Data/@msoxl:Type'
  );
-$function$;
+$$;
 
 CREATE OR REPLACE FUNCTION spreadsheetml_fromfile(xlfile text)
 RETURNS TABLE(row_number integer, cell_data text, cell_type text) LANGUAGE plpgsql as
-$function$
+$$
 declare
  lo_oid oid;
  xlxml xml;
@@ -49,4 +49,4 @@ begin
   cell_type text path 'msoxl:Data/@msoxl:Type'
  );
 end;
-$function$;
+$$;
