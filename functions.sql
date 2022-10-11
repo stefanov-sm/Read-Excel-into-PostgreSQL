@@ -10,7 +10,7 @@ $$
    'urn:schemas-microsoft-com:office:excel'       as x,
    'urn:schemas-microsoft-com:office:spreadsheet' as ss,
    'http://www.w3.org/TR/REC-html40' as html
-  ), 
+  ),
   '/msoxl:Workbook/msoxl:Worksheet/msoxl:Table/msoxl:Row/msoxl:Cell' 
   passing by ref xl
   columns 
