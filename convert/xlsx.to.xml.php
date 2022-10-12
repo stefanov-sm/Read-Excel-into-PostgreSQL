@@ -1,6 +1,6 @@
 <?php
 const xlOpenXMLWorkbook = 51, xlXMLSpreadsheet = 46;
-// https://learn.microsoft.com/en-us/office/vba/api/excel.xlfileformat
+// Ref. https://learn.microsoft.com/en-us/office/vba/api/excel.xlfileformat
 
 function xlsx_to_spreadsheetml($xlsx_filename, $xml_filename)
 {
