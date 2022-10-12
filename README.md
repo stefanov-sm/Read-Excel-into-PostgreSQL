@@ -5,4 +5,7 @@
 
 - Checks the risk of data distortion by the CSV generation as it may depend on regional settings.   
 - May be ported to other RDBMS that support SQL-standard XMLTABLE.  
-- `usage.sql` is a working example that uses `ecb.xml` spreadsheet.
+- `usage.sql` is a working example that uses `ecb.xml` spreadsheet.  
+
+XLS[X] to XML conversion script examples in [convert](https://github.com/stefanov-sm/Read-Office-XML-into-PostgreSQL-table/tree/main/convert) folder.  
+Example CLI usage: `cscript xlsx2xml.wsf <input xls[x] file> <output xml file>`
