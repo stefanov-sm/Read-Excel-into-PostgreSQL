@@ -7,5 +7,5 @@
 - May be ported to other RDBMS that support SQL-standard XMLTABLE.  
 - `usage.sql` is a working example that uses `ecb.xml` spreadsheet.  
 
-XLS[X] to XML conversion scripts in [convert](https://github.com/stefanov-sm/Read-Office-XML-into-PostgreSQL-table/tree/main/convert) folder.  
+XLS[X] to XML conversion scripts and sample files in [convert](https://github.com/stefanov-sm/Read-Office-XML-into-PostgreSQL-table/tree/main/convert) folder.  
 Example CLI usage: `cscript xlsx2xml.wsf <input xls[x] file full name> <output xml file full name>`
