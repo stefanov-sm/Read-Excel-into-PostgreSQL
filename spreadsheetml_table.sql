@@ -1,7 +1,7 @@
 -- DROP FUNCTION IF EXIATA spreadsheetml_table(xml);
 CREATE OR REPLACE FUNCTION spreadsheetml_table(xl xml)
 RETURNS TABLE(row_number integer, cell_data text, cell_type text) IMMUTABLE AS
-$function$
+$body$
  select *
  from xmltable
  (
@@ -20,4 +20,4 @@ $function$
   "cell_data" text path 'msoxl:Data',
   "cell_type" text path 'msoxl:Data/@msoxl:Type'
  ) xlt;
-$function$ LANGUAGE sql;
+$body$ LANGUAGE sql;
