@@ -1,7 +1,7 @@
 -- DROP FUNCTION IF EXISTS spreadsheetml_fromfile(text);
 CREATE OR REPLACE FUNCTION spreadsheetml_fromfile(xlfile text)
-RETURNS TABLE(rn integer, cell_data text, cell_type text) AS
-$function$
+RETURNS TABLE(rn integer, cell_data text, cell_type text) IMMUTABLE AS
+$body$
 declare
  lo_oid oid;
  xlxml xml;
@@ -27,4 +27,4 @@ begin
    cell_type text path 'msoxl:Data/@msoxl:Type'
  );
 end;
-$function$ LANGUAGE plpgsql;
+$body$ LANGUAGE plpgsql;
