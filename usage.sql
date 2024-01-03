@@ -1,11 +1,17 @@
 -- 5 is a parameter, the number of spreadsheet columns
+with t as 
+(
+ select *,
+ (rn - 1) % 5 col_no, -- rn is 1-based
+ (rn - 1) / 5 row_no
+ from spreadsheetml_fromfile('path-to/ecb.xml')
+)
 select 
-  (row_number - 1) / 5 ordinal,
-  max(cell_data) filter (where row_number % 5 =  1) "A",  
-  max(cell_data) filter (where row_number % 5 =  2) "B",  
-  max(cell_data) filter (where row_number % 5 =  3) "C",
-  max(cell_data) filter (where row_number % 5 =  4) "D",  
-  max(cell_data) filter (where row_number % 5 =  0) "E"
-from spreadsheetml_fromfile('path-to/ecb.xml')
-group by ordinal
-order by ordinal;
+  max(cell_data) filter (where col_no = 0) subject,
+  max(cell_data) filter (where col_no = 1) "name",
+  max(cell_data) filter (where col_no = 2) ::timestamp date_time,
+  max(cell_data) filter (where col_no = 3) "ISO (currency)",
+  max(cell_data) filter (where col_no = 4) ::numeric rate
+from t
+where row_no > 0 -- skip the title row
+group by row_no order by row_no;
