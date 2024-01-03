@@ -1,6 +1,7 @@
+-- DROP FUNCTION IF EXISTS spreadsheetml_fromfile(text);
 CREATE OR REPLACE FUNCTION spreadsheetml_fromfile(xlfile text)
-RETURNS TABLE(row_number integer, cell_data text, cell_type text) LANGUAGE plpgsql as
-$$
+RETURNS TABLE(rn integer, cell_data text, cell_type text) AS
+$function$
 declare
  lo_oid oid;
  xlxml xml;
@@ -21,9 +22,9 @@ begin
   '/msoxl:Workbook/msoxl:Worksheet/msoxl:Table/msoxl:Row/msoxl:Cell' 
   passing by ref xlxml
   columns
-   row_number for ordinality, 
+   rn for ordinality, 
    cell_data text path 'msoxl:Data', 
    cell_type text path 'msoxl:Data/@msoxl:Type'
  );
 end;
-$$;
+$function$ LANGUAGE plpgsql;
