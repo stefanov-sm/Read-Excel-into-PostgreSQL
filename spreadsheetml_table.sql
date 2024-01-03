@@ -1,6 +1,6 @@
 -- DROP FUNCTION IF EXIATA spreadsheetml_table(xml);
 CREATE OR REPLACE FUNCTION spreadsheetml_table(xl xml)
-RETURNS TABLE(row_number integer, cell_data text, cell_type text) IMMUTABLE AS
+RETURNS TABLE(rn integer, cell_data text, cell_type text) IMMUTABLE AS
 $body$
  select *
  from xmltable
@@ -16,8 +16,8 @@ $body$
   '/msoxl:Workbook/msoxl:Worksheet/msoxl:Table/msoxl:Row/msoxl:Cell'
   passing by ref xl
   columns
-  "row_number" for ordinality,
-  "cell_data" text path 'msoxl:Data',
-  "cell_type" text path 'msoxl:Data/@msoxl:Type'
+  rn for ordinality,
+  cell_data text path 'msoxl:Data',
+  cell_type text path 'msoxl:Data/@msoxl:Type'
  ) xlt;
 $body$ LANGUAGE sql;
