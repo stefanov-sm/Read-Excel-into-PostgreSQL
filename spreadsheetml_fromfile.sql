@@ -1,6 +1,6 @@
 -- DROP FUNCTION IF EXISTS spreadsheetml_fromfile(text);
 CREATE OR REPLACE FUNCTION spreadsheetml_fromfile(xlfile text)
-RETURNS TABLE(rn integer, cell_data text, cell_type text) IMMUTABLE AS
+RETURNS TABLE(rn integer, cell_data text, cell_type text) AS
 $body$
 declare
  lo_oid oid;
